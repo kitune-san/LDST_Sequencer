@@ -164,7 +164,7 @@ module LDST_SEQUENCER (
     assign          alu_wb_zero_flag        = ~|alu_result;
 
     // Writeback
-    assign          alu_wb                  = load & select_alu;
+    assign          alu_wb                  = io_bus_in & select_alu;
     wire    [7:0]   alu_load                = select_alu ? alu_result : 8'h00;
 
 
