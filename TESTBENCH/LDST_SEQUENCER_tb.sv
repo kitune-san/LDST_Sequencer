@@ -1049,9 +1049,204 @@ module LDST_SEQUENCER_tm();
         #(`TB_CYCLE * 1);
 
 
+        $display("***** TEST CALL ***** at %d", tb_cycle_counter);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'hAB};     // LD #ABH
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0100, 8'hCD};     // CALL #CDH  (#ABCD)
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'hE0};     // LD #E0H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0100, 8'hF0};     // CALL #F0H  (#E0F0)
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        $display("***** TEST RET ***** at %d", tb_cycle_counter);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0101, 8'h00};     // RET
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0101, 8'h00};     // RET
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        $display("***** TEST JZ ***** at %d", tb_cycle_counter);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h00};     // LD #00H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0001, 8'h02};     // ST FLAGS
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h01};     // LD #01H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b1001, 8'h02};     // JZ #02H  (#0102)
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h01};     // LD #01H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0001, 8'h02};     // ST FLAGS
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h01};     // LD #01H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b1001, 8'h02};     // JZ #02H  (#0102)
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        $display("***** TEST JC ***** at %d", tb_cycle_counter);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h00};     // LD #00H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0001, 8'h02};     // ST FLAGS
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h03};     // LD #03H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b1010, 8'h04};     // JC #04H  (#0304)
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h02};     // LD #02H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0001, 8'h02};     // ST FLAGS
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h03};     // LD #03H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b1010, 8'h04};     // JC #04H  (#0304)
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        $display("***** TEST JO ***** at %d", tb_cycle_counter);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h00};     // LD #00H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0001, 8'h02};     // ST FLAGS
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h05};     // LD #05H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b1100, 8'h06};     // JO #06H  (#0506)
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h04};     // LD #04H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0001, 8'h02};     // ST FLAGS
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h05};     // LD #05H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b1100, 8'h06};     // JO #06H  (#0506)
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+
         clock_enable            = 1'b0;
         #(`TB_CYCLE * 12);
-
 
         // End of simulation
 `ifdef IVERILOG
