@@ -1244,6 +1244,19 @@ module LDST_SEQUENCER_tm();
         clock_enable            = 1'b1;
         #(`TB_CYCLE * 1);
 
+        $display("***** TEST JMP ***** at %d", tb_cycle_counter);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h07};     // LD #07H
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b1000, 8'h08};     // JO #08H  (#0708)
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
 
         clock_enable            = 1'b0;
         #(`TB_CYCLE * 12);
