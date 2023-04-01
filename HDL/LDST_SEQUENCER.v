@@ -246,7 +246,7 @@ module LDST_SEQUENCER (
     end
 
     // Jump/Subroutine
-    assign  jump_instruction = (jump & |(flags[2:0] & instruction_bus_data[10:8])) | call | ret;
+    assign  jump_instruction = (jump & (|(flags[2:0] & instruction_bus_data[10:8]) | ~|instruction_bus_data[10:8])) | call | ret;
     assign  jump_instruction_count = ret ? stack[0] : {reg_work, instruction_bus_data[7:0]};
 
 
