@@ -2,7 +2,7 @@
 `define TB_CYCLE        20
 `define TB_FINISH_COUNT 20000
 
-module LDST_SEQUENCER_tm();
+module tb();
 
     timeunit        1ns;
     timeprecision   10ps;
@@ -303,6 +303,28 @@ module LDST_SEQUENCER_tm();
         #(`TB_CYCLE * 1);
         clock_enable            = 1'b1;
         #(`TB_CYCLE * 1);
+
+
+        $display("***** TEST ALU NOT ***** at %d", tb_cycle_counter);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0010, 8'h2C};     // LD #NOT
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0001, 8'h03};     // ST ALU
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
+        clock_enable            = 1'b0;
+        instruction_bus_data    = {4'b0000, 8'h03};     // LD ALU
+        #(`TB_CYCLE * 1);
+        clock_enable            = 1'b1;
+        #(`TB_CYCLE * 1);
+
 
         $display("***** TEST ALU XOR ***** at %d", tb_cycle_counter);
 
