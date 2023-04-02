@@ -154,6 +154,7 @@ module LDST_SEQUENCER (
     wire    alu_op_shl                      = alu_op[7:5] == 3'b101;
     wire    alu_op_shr                      = alu_op[7:6] == 2'b11;
 
+    wire    alu_opf_op2_zero                = alu_op[3];
     wire    alu_opf_not                     = alu_op[2];
     wire    alu_opf_neg                     = alu_op[1];
     wire    alu_opf_carry                   = alu_op[0];
@@ -162,7 +163,8 @@ module LDST_SEQUENCER (
     wire    update_overflow                 = alu_op_add;
 
     wire    [7:0]   alu_op1                 = reg_a;
-    wire    [7:0]   alu_op2                 = alu_opf_neg ? ~reg_b : reg_b;
+    wire    [7:0]   alu_op2_tmp             = alu_opf_op2_zero ? 8'h00 : reg_b;
+    wire    [7:0]   alu_op2                 = alu_opf_neg ? ~alu_op2_tmp : alu_op2_tmp;
     wire            alu_carry               = alu_opf_neg ? ~(alu_opf_carry & ~carry_flag) : (alu_opf_carry & carry_flag);
 
     wire    [7:0]   alu_result_and          = alu_op_and  ? (alu_op1 & alu_op2) : 8'h00;
