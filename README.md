@@ -33,23 +33,24 @@ Note: r=register address, d=(immideate) data
 
 ## ALU
 
-|Op code  |OP  |Description            |O |C |Z |
-|---------|----|-----------------------|--|--|--|
-|0000 0000|AND |A and B                |R |R |X |
-|0000 0100|NAND|A nand B               |R |R |X |
-|0010 0000|OR  |A or B                 |R |R |X |
-|0010 0100|NOR |A nor B                |R |R |X |
-|0100 0000|XOR |A xor B                |R |R |X |
-|0100 0100|XNOR|A xnor B               |R |R |X |
-|1000 0000|ADD |A + B                  |X |X |X |
-|1000 0001|ADC |A + B + carry          |X |X |X |
-|1000 0010|SUB |A - B                  |X |X |X |
-|1000 0011|SBC |A - B - !carry         |X |X |X |
-|1010 0000|SHL |A << 1                 |R |X |X |
-|1010 0001|SHCL|A << 1 MSB -> carry    |R |X |X |
-|1100 0000|SHR |A >> 1                 |R |X |X |
-|1100 0001|SHCR|A >> 1 LSB -> carry    |R |X |X |
-|1110 0000|SAR |A >> 1 MSB -> result[7]|R |X |X |
+|Op code  |OP  |Description              |O |C |Z |
+|---------|----|-------------------------|--|--|--|
+|0000 0000|AND |A and B                  |R |R |X |
+|0000 0100|NAND|A nand B                 |R |R |X |
+|0010 0000|OR  |A or B                   |R |R |X |
+|0010 0100|NOR |A nor B                  |R |R |X |
+|0010 1100|NOT |not A                    |R |R |X |
+|0100 0000|XOR |A xor B                  |R |R |X |
+|0100 0100|XNOR|A xnor B                 |R |R |X |
+|1000 0000|ADD |A + B                    |X |X |X |
+|1000 0001|ADC |A + B + carry            |X |X |X |
+|1000 0010|SUB |A - B                    |X |X |X |
+|1000 0011|SBC |A - B - !carry           |X |X |X |
+|1010 0000|SHL |A << 1                   |R |X |X |
+|1010 0001|SHCL|A << 1 carry -> result[0]|R |X |X |
+|1100 0000|SHR |A >> 1                   |R |X |X |
+|1100 0001|SHCR|A >> 1 carry -> result[7]|R |X |X |
+|1110 0000|SAR |A >> 1 MSB -> result[7]  |R |X |X |
 
 X = set or cleared according to result
 
