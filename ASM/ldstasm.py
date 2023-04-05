@@ -43,7 +43,10 @@ class LDSTAssembler:
                 self.set_symbol(token[1], token[2])
                 self.check_eol(token, 3);
             elif token[0] == "LD":
-                self.object.append([0b0000, token[1]])
+                if token[1].startswith("#"):
+                    self.object.append([0b0010, token[1].lstrip('#')])
+                else:
+                    self.object.append([0b0000, token[1]])
                 self.check_eol(token, 2);
             elif token[0] == "LDI":
                 self.object.append([0b0010, token[1]])

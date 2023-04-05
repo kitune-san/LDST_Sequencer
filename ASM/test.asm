@@ -17,19 +17,24 @@ TEST:
     JO      0
     JMP     0b11111111
 ALU_SYMBOL:
-    LD      AND
-    LD      NAND
+    LDI     AND
+    LDI     NAND
+    LDI     OR
+    LDI     NOR
+    LDI     NOT
+    LDI     XOR
+    LDI     XNOR
+    LDI     ADD
+    LDI     ADC
+    LDI     SUB
+    LDI     SBC
+    LDI     SHL
+    LDI     SHCL
+    LDI     SHR
+    LDI     SHCR
+    LDI     SAR
+IMMIDIATE:
     LD      OR
-    LD      NOR
-    LD      NOT
-    LD      XOR
-    LD      XNOR
-    LD      ADD
-    LD      ADC
-    LD      SUB
-    LD      SBC
-    LD      SHL
-    LD      SHCL
-    LD      SHR
-    LD      SHCR
-    LD      SAR
+    LD      #OR
+    LDI     OR
+
