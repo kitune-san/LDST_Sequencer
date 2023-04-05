@@ -62,19 +62,26 @@ R = restored from previously saved value
 - 10 + 5
 
 ```
-# A <- 10
-0010 0000 1010: LD #10
-0001 0000 0000: ST A
+; A <- 10
+0010 0000 1010: LDI 10
+0001 0000 0000: ST  A
 
-# B <- 5
-0010 0000 0101: LD #5
-0001 0000 0001: ST B
+; B <- 5
+0010 0000 0101: LDI 5
+0001 0000 0001: ST  B
 
-# ALU <- ADD
-0010 1000 0000: LD #ADD
-0001 0000 0011: ST ALU
+; ALU <- ADD
+0010 1000 0000: LDI ADD
+0001 0000 0011: ST  ALU
 
-# work_reg <- A + B
-0000 0000 0011: LD ALU
+; work_reg <- A + B
+0000 0000 0011: LD  ALU
+```
+
+
+## Assembler
+
+```
+$ python ldstasm.py input.asm -o output.[mem|v]
 ```
 
