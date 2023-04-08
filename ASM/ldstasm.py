@@ -133,7 +133,7 @@ def output_verilogfile(filename, object):
         file.write("    input clock;\n")
         file.write("    input [{0}:0] address;\n".format(address_bit-1))
         file.write("    output reg [12:0] data_out;\n")
-        file.write("    reg [12:0] data_out;\n")
+#        file.write("    reg [12:0] data_out;\n")
         file.write("\n")
         file.write("    always @ (posedge clock)\n")
         file.write("    begin\n")
