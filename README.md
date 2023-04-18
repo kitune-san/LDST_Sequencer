@@ -85,3 +85,5 @@ R = restored from previously saved value
 $ python ldstasm.py input.asm -o output.[mem|v]
 ```
 
+## Projects using LDST
+- KFMMC-V2 (https://github.com/kitune-san/KFMMC_V2) - Multi media card access controller
